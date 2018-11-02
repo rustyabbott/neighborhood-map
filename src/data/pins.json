@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Pelican Restaurant",
+    "street": "351 SW Flagler Ave",
+    "city": "Stuart",
+    "state": "FL",
+    "zip": "34994",
+    "url": "http://www.pelicancafeandbeach.com/",
+    "pos": {"lat":27.202319,"lng":-80.257691}
+  },
+  {
+    "name": "Flagler Park",
+    "street": "201 SW Flagler Ave",
+    "city": "Stuart",
+    "state": "FL",
+    "zip": "34994",
+    "url": "http://www.cityofstuart.us/index.php/en/flagler-park",
+    "pos": {"lat":27.201703,"lng":-80.256858}
+  },
+  {
+    "name": "Shepard Park",
+    "street": "600 SW Flagler Ave",
+    "city": "Stuart",
+    "state": "FL",
+    "zip": "34994",
+    "url": "http://www.cityofstuart.us/index.php/en/shepard-park",
+    "pos": {"lat":27.197096,"lng":-80.258604}
+  }
+]

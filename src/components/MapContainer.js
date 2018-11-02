@@ -2,9 +2,40 @@ import React from 'react';
 import { Map, GoogleApiWrapper } from 'google-maps-react';
 
 class MapContainer extends React.Component {
+  state = {
+    map: null,
+    markers: [],
+    markerProps: []
+  }
 
-  mapReady = (props, map) => {
+  fetchPlaces = (mapProps, map) => {
     this.setState({map});
+    this.updateMarkers(this.props.locations);
+  }
+
+  updateMarkers = (locations) => {
+    this.state.markers.forEach(marker => marker.setMap(null));
+
+    let markerProps = [];
+
+    let markers = locations.map((location, index) => {
+      let mProps = {
+        key: index,
+        index,
+        name: location.name,
+        position: location.pos,
+        url: location.url
+      };
+      markerProps.push(mProps);
+
+      let marker = new this.props.google.maps.Marker({
+        position: location.pos,
+        map: this.state.map
+      });
+      return marker;
+    })
+
+    this.setState({markers, markerProps});
   }
 
   render = () => {
@@ -21,7 +52,7 @@ class MapContainer extends React.Component {
       <Map
         role="application"
         aria-label="map"
-        onReady={this.mapReady}
+        onReady={this.fetchPlaces}
         google={this.props.google}
         zoom={this.props.zoom}
         style={style}

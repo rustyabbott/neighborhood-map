@@ -1,12 +1,14 @@
 import React from 'react';
 import './App.css';
 import MapContainer from './components/MapContainer';
+import Pins from './data/pins';
 
 class App extends React.Component {
   state = {
-    lat: 27.1972222,
-    lon: -80.2530556,
-    zoom: 14
+    lat: 27.1983121,
+    lon: -80.256597,
+    zoom: 16.5,
+    pins: Pins
   }
 
   render() {
@@ -18,7 +20,9 @@ class App extends React.Component {
         <MapContainer
           lat={this.state.lat}
           lon={this.state.lon}
-          zoom={this.state.zoom} />
+          zoom={this.state.zoom}
+          locations={this.state.pins}
+        />
       </div>
     );
   }
