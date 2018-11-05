@@ -25,5 +25,23 @@
     "zip": "34994",
     "url": "http://www.cityofstuart.us/index.php/en/shepard-park",
     "pos": {"lat":27.197096,"lng":-80.258604}
+  },
+  {
+    "name": "Terra Fermata",
+    "street": "26 SE 6th St",
+    "city": "Stuart",
+    "state": "FL",
+    "zip": "34994",
+    "url": "http://terrafermata.com/",
+    "pos": {"lat":27.194631,"lng":-80.252192}
+  },
+  {
+    "name": "Osceola Street Cafe",
+    "street": "26 SW Osceola St",
+    "city": "Stuart",
+    "state": "FL",
+    "zip": "34994",
+    "url": "https://www.osceolastreet.com/",
+    "pos": {"lat":27.198703,"lng":-80.253513}
   }
 ]
