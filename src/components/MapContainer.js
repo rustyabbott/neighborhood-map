@@ -82,7 +82,8 @@ class MapContainer extends React.Component {
           visible={this.state.showingInfoWindow}
           onClose={this.closeInfoWindow}>
           <div>
-            Testing InfoWindow
+            <h3>{this.state.activeMarkerProps && this.state.activeMarkerProps.name}</h3>
+            <a href={this.state.activeMarkerProps && this.state.activeMarkerProps.url} target="_blank" rel="noopener noreferrer">Website</a>
           </div>
         </InfoWindow>
       </Map>
