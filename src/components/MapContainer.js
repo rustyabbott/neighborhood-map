@@ -16,11 +16,55 @@ class MapContainer extends React.Component {
     this.updateMarkers(this.props.pins);
   }
 
+  getBusinessInfo = (props, data) => {
+    return data
+      .response
+      .venues
+      .filter(item => item.name.includes(props.name) || props.name.includes(item.name));
+  }
+
   onMarkerClick = (props, marker, e) => {
     // Foursquare API call
-    fetch(`https://api.foursquare.com/v2/venues/search?client_id=NYWFLPEYJGUGQD5FHYWVTLC52XHM25UBUHOMLU5H24IYH0J2&client_secret=223VZPKENS5DBED31SV5RBVR5ANUOUBBGHKWYRFQEQBPUMVI&v=20180323&limit=1&ll=40.7243,-74.0018&query=coffee`)
-        .then(response => {
-          console.log(response);
+    let url = `https://api.foursquare.com/v2/venues/search?client_id=NYWFLPEYJGUGQD5FHYWVTLC52XHM25UBUHOMLU5H24IYH0J2&client_secret=223VZPKENS5DBED31SV5RBVR5ANUOUBBGHKWYRFQEQBPUMVI&v=20180323&radius=100&ll=${props.position.lat},${props.position.lng}`;
+    let headers = new Headers();
+    let request = new Request(url, {
+      method: 'GET',
+      headers
+    })
+
+    let activeMarkerProps;
+    fetch(request)
+        .then(response => response.json())
+        .then(result => {
+          let restaurant = this.getBusinessInfo(props, result);
+          activeMarkerProps = {
+            ...props,
+            foursquare: restaurant[0]
+          };
+
+          if (activeMarkerProps.foursquare) {
+            let url = `https://api.foursquare.com/v2/venues/${restaurant[0].id}/photos?client_id=NYWFLPEYJGUGQD5FHYWVTLC52XHM25UBUHOMLU5H24IYH0J2&client_secret=223VZPKENS5DBED31SV5RBVR5ANUOUBBGHKWYRFQEQBPUMVI&v=20180323`;
+            fetch(url)
+              .then(response => response.json())
+              .then(result => {
+                activeMarkerProps = {
+                  ...activeMarkerProps,
+                  images: result.response.photos
+                };
+                if (this.state.activeMarker)
+                  this.setState({
+                    showingInfoWindow: true,
+                    activeMarker: marker,
+                    activeMarkerProps
+                  });
+              })
+          } else {
+            this.setState({
+              showingInfoWindow: true,
+              activeMarker: marker,
+              activeMarkerProps
+            })
+          }
         })
         .catch(() => {
           console.log('No response');
@@ -29,7 +73,7 @@ class MapContainer extends React.Component {
     this.setState({
       showingInfoWindow: true,
       activeMarker: marker,
-      activeMarkerProps: props
+      activeMarkerProps
     });
   }
 
@@ -92,6 +136,12 @@ class MapContainer extends React.Component {
           onClose={this.closeInfoWindow}>
           <div>
             <h3>{this.state.activeMarkerProps && this.state.activeMarkerProps.name}</h3>
+            {this.state.activeMarkerProps && this.state.activeMarkerProps.images ? (
+              <div>
+                <img src={this.state.activeMarkerProps.images.items[0].prefix + "100x100" + this.state.activeMarkerProps.images.items[0].suffix} alt={this.state.activeMarkerProps.name} />
+                <p>Photo from Foursquare</p>
+              </div>
+            ) : ""}
             <a href={this.state.activeMarkerProps && this.state.activeMarkerProps.url} target="_blank" rel="noopener noreferrer">Website</a>
           </div>
         </InfoWindow>
