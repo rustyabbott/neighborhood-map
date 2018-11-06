@@ -1,24 +1,41 @@
 import React from 'react';
-import { Map, GoogleApiWrapper } from 'google-maps-react';
+import { Map, GoogleApiWrapper, InfoWindow } from 'google-maps-react';
 
 class MapContainer extends React.Component {
   state = {
     map: null,
     markers: [],
-    markerProps: []
+    markerProps: [],
+    activeMarker: null,
+    activeMarkerProps: null,
+    showingInfoWindow: false
   }
 
   fetchPlaces = (mapProps, map) => {
     this.setState({map});
-    this.updateMarkers(this.props.locations);
+    this.updateMarkers(this.props.pins);
   }
 
-  updateMarkers = (locations) => {
+  onMarkerClick = (props, marker, e) => {
+    this.setState({
+      showingInfoWindow: true,
+      activeMarker: marker,
+      activeMarkerProps: props
+    });
+  }
+
+  closeInfoWindow = () => {
+    this.setState({
+      showingInfoWindow: false,
+      activeMarker: null,
+      activeMarkerProps: null
+    })
+  }
+
+  updateMarkers = (pins) => {
     this.state.markers.forEach(marker => marker.setMap(null));
-
     let markerProps = [];
-
-    let markers = locations.map((location, index) => {
+    let markers = pins.map((location, index) => {
       let mProps = {
         key: index,
         index,
@@ -27,14 +44,15 @@ class MapContainer extends React.Component {
         url: location.url
       };
       markerProps.push(mProps);
-
       let marker = new this.props.google.maps.Marker({
         position: location.pos,
         map: this.state.map
       });
+      marker.addListener('click', () => {
+        this.onMarkerClick(mProps, marker, null);
+      })
       return marker;
     })
-
     this.setState({markers, markerProps});
   }
 
@@ -56,7 +74,17 @@ class MapContainer extends React.Component {
         google={this.props.google}
         zoom={this.props.zoom}
         style={style}
-        initialCenter={center}>
+        initialCenter={center}
+        onClick={this.closeInfoWindow}>
+
+        <InfoWindow
+          marker={this.state.activeMarker}
+          visible={this.state.showingInfoWindow}
+          onClose={this.closeInfoWindow}>
+          <div>
+            Testing InfoWindow
+          </div>
+        </InfoWindow>
       </Map>
     )
   }

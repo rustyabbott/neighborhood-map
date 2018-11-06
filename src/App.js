@@ -21,7 +21,7 @@ class App extends React.Component {
           lat={this.state.lat}
           lon={this.state.lon}
           zoom={this.state.zoom}
-          locations={this.state.pins}
+          pins={this.state.pins}
         />
       </div>
     );
