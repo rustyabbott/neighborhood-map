@@ -17,6 +17,15 @@ class MapContainer extends React.Component {
   }
 
   onMarkerClick = (props, marker, e) => {
+    // Foursquare API call
+    fetch(`https://api.foursquare.com/v2/venues/search?client_id=NYWFLPEYJGUGQD5FHYWVTLC52XHM25UBUHOMLU5H24IYH0J2&client_secret=223VZPKENS5DBED31SV5RBVR5ANUOUBBGHKWYRFQEQBPUMVI&v=20180323&limit=1&ll=40.7243,-74.0018&query=coffee`)
+        .then(response => {
+          console.log(response);
+        })
+        .catch(() => {
+          console.log('No response');
+        });
+
     this.setState({
       showingInfoWindow: true,
       activeMarker: marker,
