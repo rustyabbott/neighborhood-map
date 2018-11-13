@@ -1,12 +1,18 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
+import Drawer from '@material-ui/core/Drawer';
 
 export default class List extends React.Component {
+  state = {
+
+  }
+
   render = () => {
     return (
-      <Button>
-        Hello World
-      </Button>
+      <Drawer open={this.props.open} onClose={this.props.toggleDrawer}>
+        <div>
+          Testing
+        </div>
+      </Drawer>
     )
   }
 }

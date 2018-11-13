@@ -3,6 +3,7 @@ import './App.css';
 import MapContainer from './components/MapContainer';
 import Pins from './data/pins';
 import List from './components/List';
+import Button from '@material-ui/core/Button';
 
 class App extends React.Component {
   state = {
@@ -10,13 +11,22 @@ class App extends React.Component {
     lon: -80.256597,
     zoom: 16.5,
     pins: Pins,
-    open: true
+    open: false
+  }
+
+  toggleDrawer = () => {
+    this.setState({
+      open: !this.state.open
+    })
   }
 
   render() {
     return (
       <div className="App">
         <div>
+          <Button variant="contained" color="primary" onClick={this.toggleDrawer}>
+            Menu
+          </Button>
           <h1>Stuart, FL</h1>
         </div>
         <MapContainer
@@ -28,6 +38,7 @@ class App extends React.Component {
         <List
           pins={this.state.pins}
           open={this.state.open}
+          toggleDrawer={this.toggleDrawer}
         />
       </div>
     );
