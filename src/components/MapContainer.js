@@ -1,4 +1,5 @@
 import React from 'react';
+import NoMap from './NoMap';
 import { Map, GoogleApiWrapper, InfoWindow } from 'google-maps-react';
 
 class MapContainer extends React.Component {
@@ -170,5 +171,5 @@ class MapContainer extends React.Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyC_UFVqPw6ebSn8Xnjq0f0UFM5-aGsyHVE"
+  apiKey: "AIzaSyC_UFVqPw6ebSn8Xnjq0f0UFM5-aGsyHVE", LoadingContainer: NoMap
 })(MapContainer)
