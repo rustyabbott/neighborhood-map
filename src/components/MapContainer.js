@@ -36,7 +36,7 @@ class MapContainer extends React.Component {
     console.log(this.state.markerProps[props.selectedIndex]); console.log(this.state.markers[props.selectedIndex]);
   }
 
-  fetchPlaces = (props, map) => {
+  fetchPlaces = (mapProps, map) => {
     this.setState({map});
     this.updateMarkers(this.props.pins);
   }
@@ -49,9 +49,8 @@ class MapContainer extends React.Component {
   }
 
   onMarkerClick = (props, marker, e) => {
-    this.closeInfoWindow();
     // Foursquare API call
-    let url = `https://api.foursquare.com/v2/venues/search?client_id=NYWFLPEYJGUGQD5FHYWVTLC52XHM25UBUHOMLU5H24IYH0J2&client_secret=223VZPKENS5DBED31SV5RBVR5ANUOUBBGHKWYRFQEQBPUMVI&v=20180323&radius=100&ll=${props.position.lat},${props.position.lng}`;
+    let url = `https://api.foursquare.com/v2/venues/search?client_id=GIBYX5MXP3ZKH5WIMXHK00A4NCXX5HLZGKVYJ4IYLWOTCLGR&client_secret=FPTOTCYNLM5DXZDGBPK02K4AA3Z45CNVYEE5EW1EKKZGRI53&v=20180323&radius=100&ll=${props.position.lat},${props.position.lng}`;
     let headers = new Headers();
     let request = new Request(url, {
       method: 'GET',
@@ -69,7 +68,7 @@ class MapContainer extends React.Component {
           };
 
           if (activeMarkerProps.foursquare) {
-            let url = `https://api.foursquare.com/v2/venues/${restaurant[0].id}/photos?client_id=NYWFLPEYJGUGQD5FHYWVTLC52XHM25UBUHOMLU5H24IYH0J2&client_secret=223VZPKENS5DBED31SV5RBVR5ANUOUBBGHKWYRFQEQBPUMVI&v=20180323`;
+            let url = `https://api.foursquare.com/v2/venues/${restaurant[0].id}/photos?client_id=GIBYX5MXP3ZKH5WIMXHK00A4NCXX5HLZGKVYJ4IYLWOTCLGR&client_secret=FPTOTCYNLM5DXZDGBPK02K4AA3Z45CNVYEE5EW1EKKZGRI53&v=20180323`;
             fetch(url)
               .then(response => response.json())
               .then(result => {

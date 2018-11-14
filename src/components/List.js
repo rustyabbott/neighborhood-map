@@ -20,13 +20,14 @@ export default class List extends React.Component {
             type="text"
             name="filter"
             placeholder="Filter locations"
+            arria-labelledby="Filter locations"
             onChange={ e => this.updateQuery(e.target.value) }
             value={this.state.query} />
           <ul>
             {this.props.pins && this.props.pins.map((location, index) => {
               return (
                 <li key={index}>
-                  <button key={index} onClick={e => this.props.clickButton(index)}>{location.name}</button>
+                  <button key={index} aria-labelledby={location.name} onClick={e => this.props.clickButton(index)}>{location.name}</button>
                 </li>
               )
             })}

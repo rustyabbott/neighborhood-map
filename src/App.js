@@ -13,9 +13,7 @@ class App extends React.Component {
     zoom: 16.5,
     pins: Pins,
     open: false,
-    filtered: null,
-    selectedIndex: null,
-    mapScriptAvailable: true
+    selectedIndex: null
   }
 
   componentDidMount = () => {
@@ -51,7 +49,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <div>
-          <Button variant="contained" color="primary" onClick={this.toggleDrawer}>
+          <Button variant="contained" color="primary" onClick={this.toggleDrawer} aria-labelledby="Menu">
             Menu
           </Button>
           <h1>Stuart, FL</h1>
