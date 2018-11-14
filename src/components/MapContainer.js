@@ -119,7 +119,9 @@ class MapContainer extends React.Component {
       markerProps.push(mProps);
       let marker = new this.props.google.maps.Marker({
         position: location.pos,
-        map: this.state.map
+        map: this.state.map,
+        draggable: false,
+        animation: this.props.google.maps.Animation.DROP
       });
       marker.addListener('click', () => {
         this.onMarkerClick(mProps, marker, null);
