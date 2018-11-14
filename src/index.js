@@ -6,8 +6,8 @@ import * as serviceWorker from './serviceWorker';
 
 window.gm_authFailure = () => {
   ReactDOM.render(
-    <h2>Google maps failed to load properly, please try again.</h2>,
-    window.document.getElementById('map'));
+    <h2>We're having trouble loading the Google Map. Please make sure you're connected to the internet and try again later.</h2>,
+    window.document.getElementById('root'));
 }
 
 ReactDOM.render(<App />, document.getElementById('root'));
