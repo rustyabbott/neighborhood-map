@@ -13,7 +13,9 @@ class App extends React.Component {
     zoom: 16.5,
     pins: Pins,
     open: false,
-    selectedIndex: null
+    filtered: null,
+    selectedIndex: null,
+    mapScriptAvailable: true
   }
 
   componentDidMount = () => {

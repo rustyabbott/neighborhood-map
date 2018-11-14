@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class NoMap extends React.Component {
+class NoMap extends React.Component {
   state = {
     show: false,
     timeout: null
@@ -27,3 +27,5 @@ export default class NoMap extends React.Component {
     )
   }
 }
+
+export default NoMap;

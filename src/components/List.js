@@ -3,6 +3,7 @@ import Drawer from '@material-ui/core/Drawer';
 
 export default class List extends React.Component {
   state = {
+    open: false,
     query: ""
   }
 

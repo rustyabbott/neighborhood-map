@@ -16,8 +16,8 @@ class MapContainer extends React.Component {
   componentWillReceiveProps = (props) => {
     this.setState({firstDrop: false});
 
+    // Update markers if number of pins change
     if (this.state.markers.length !== props.pins.length) {
-      this.closeInfoWindow();
       this.updateMarkers(props.pins);
       this.setState({activeMarker: null});
       return;
@@ -32,9 +32,11 @@ class MapContainer extends React.Component {
     }
 
     this.onMarkerClick(this.state.markerProps[props.selectedIndex], this.state.markers[props.selectedIndex]);
+
+    console.log(this.state.markerProps[props.selectedIndex]); console.log(this.state.markers[props.selectedIndex]);
   }
 
-  fetchPlaces = (mapProps, map) => {
+  fetchPlaces = (props, map) => {
     this.setState({map});
     this.updateMarkers(this.props.pins);
   }
@@ -89,18 +91,12 @@ class MapContainer extends React.Component {
               showingInfoWindow: true,
               activeMarker: marker,
               activeMarkerProps
-            })
+            });
           }
         })
         .catch(() => {
-          console.log('No response');
+          alert('Sorry for the inconvenience, but the Foursquare API is currently having issues');
         });
-
-    this.setState({
-      showingInfoWindow: true,
-      activeMarker: marker,
-      activeMarkerProps
-    });
   }
 
   closeInfoWindow = () => {
