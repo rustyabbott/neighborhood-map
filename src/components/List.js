@@ -7,7 +7,8 @@ export default class List extends React.Component {
   }
 
   updateQuery = (newQuery) => {
-    this.setState({ query: newQuery});
+    this.setState({ query: newQuery });
+    this.props.filterLocations(newQuery);
   }
 
   render = () => {
