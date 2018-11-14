@@ -5,6 +5,7 @@ import Pins from './data/pins';
 import List from './components/List';
 import Button from '@material-ui/core/Button';
 
+// Thank you to Doug Brown for an excellent walk-through https://www.youtube.com/watch?v=NVAVLCJwAAo&feature=youtu.be
 class App extends React.Component {
   state = {
     lat: 27.1983121,
@@ -41,7 +42,7 @@ class App extends React.Component {
   }
 
   clickButton = (index) => {
-    this.setState({ selectedIndex: index, open: !this.state.open })
+    this.setState({ selectedIndex: index, open: !this.state.open });
   }
 
   render() {

@@ -9,10 +9,13 @@ class MapContainer extends React.Component {
     markerProps: [],
     activeMarker: null,
     activeMarkerProps: null,
-    showingInfoWindow: false
+    showingInfoWindow: false,
+    firstDrop: true
   }
 
   componentWillReceiveProps = (props) => {
+    this.setState({firstDrop: false});
+
     if (this.state.markers.length !== props.pins.length) {
       this.closeInfoWindow();
       this.updateMarkers(props.pins);
@@ -44,6 +47,7 @@ class MapContainer extends React.Component {
   }
 
   onMarkerClick = (props, marker, e) => {
+    this.closeInfoWindow();
     // Foursquare API call
     let url = `https://api.foursquare.com/v2/venues/search?client_id=NYWFLPEYJGUGQD5FHYWVTLC52XHM25UBUHOMLU5H24IYH0J2&client_secret=223VZPKENS5DBED31SV5RBVR5ANUOUBBGHKWYRFQEQBPUMVI&v=20180323&radius=100&ll=${props.position.lat},${props.position.lng}`;
     let headers = new Headers();
@@ -72,6 +76,8 @@ class MapContainer extends React.Component {
                   images: result.response.photos
                 };
                 if (this.state.activeMarker)
+                  this.state.activeMarker.setAnimation(null);
+                  marker.setAnimation(this.props.google.maps.Animation.BOUNCE);
                   this.setState({
                     showingInfoWindow: true,
                     activeMarker: marker,
@@ -98,6 +104,7 @@ class MapContainer extends React.Component {
   }
 
   closeInfoWindow = () => {
+    this.state.activeMarker && this.state.activeMarker.setAnimation(null);
     this.setState({
       showingInfoWindow: false,
       activeMarker: null,
@@ -106,6 +113,7 @@ class MapContainer extends React.Component {
   }
 
   updateMarkers = (pins) => {
+    this.closeInfoWindow();
     this.state.markers.forEach(marker => marker.setMap(null));
     let markerProps = [];
     let markers = pins.map((location, index) => {
