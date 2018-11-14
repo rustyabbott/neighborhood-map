@@ -60,6 +60,7 @@ class App extends React.Component {
           zoom={this.state.zoom}
           pins={this.state.filtered}
           clickButton={this.clickButton}
+          selectedIndex={this.state.selectedIndex}
         />
         <List
           pins={this.state.filtered}
