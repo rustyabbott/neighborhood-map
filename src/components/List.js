@@ -25,7 +25,7 @@ export default class List extends React.Component {
             {this.props.pins && this.props.pins.map((location, index) => {
               return (
                 <li key={index}>
-                  <button key={index}>{location.name}</button>
+                  <button key={index} onClick={e => this.props.clickButton(index)}>{location.name}</button>
                 </li>
               )
             })}

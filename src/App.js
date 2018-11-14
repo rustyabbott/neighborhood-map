@@ -12,8 +12,7 @@ class App extends React.Component {
     zoom: 16.5,
     pins: Pins,
     open: false,
-    filtered: null,
-    query: ""
+    selectedIndex: null
   }
 
   componentDidMount = () => {
@@ -30,15 +29,19 @@ class App extends React.Component {
   }
 
   updateQuery = (query) => {
-    this.setSate({
+    this.setState({
       ...this.state,
       selectedIndex: null,
-      filtered: this.filterlocations(this.state.pins, query)
+      filtered: this.filterLocations(this.state.pins, query)
     });
   }
 
   filterLocations = (pins, query) => {
     return pins.filter(location => location.name.toLowerCase().includes(query.toLowerCase()));
+  }
+
+  clickButton = (index) => {
+    this.setState({ selectedIndex: index, open: !this.state.open })
   }
 
   render() {
@@ -55,11 +58,14 @@ class App extends React.Component {
           lon={this.state.lon}
           zoom={this.state.zoom}
           pins={this.state.filtered}
+          clickButton={this.clickButton}
         />
         <List
           pins={this.state.filtered}
           open={this.state.open}
           toggleDrawer={this.toggleDrawer}
+          filterLocations={this.updateQuery}
+          clickButton={this.clickButton}
         />
       </div>
     );

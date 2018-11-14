@@ -11,6 +11,25 @@ class MapContainer extends React.Component {
     showingInfoWindow: false
   }
 
+  componentWillReceiveProps = (props) => {
+    if (this.state.markers.length !== props.pins.length) {
+      this.closeInfoWindow();
+      this.updateMarkers(props.pins);
+      this.setState({activeMarker: null});
+      return;
+    }
+
+    if (!props.selectedIndex || (this.state.activeMarker && (this.state.markers[props.selectedIndex] !== this.state.activeMarker))) {
+      this.closeInfoWindow();
+    }
+
+    if (props.selectedIndex === null || typeof(props.selectedIndex) === "undefined") {
+      return;
+    }
+
+    this.onMarkerClick(this.state.markerProps[props.selectedIndex], this.state.markers[props.selectedIndex]);
+  }
+
   fetchPlaces = (mapProps, map) => {
     this.setState({map});
     this.updateMarkers(this.props.pins);
