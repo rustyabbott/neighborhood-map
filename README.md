@@ -11,7 +11,7 @@ This map of downtown Stuart, Florida utilizes the Google Maps and Foursquare API
 
 ## Note
 
-The service worker currently only works in production mode. You can run this app in production mode using ```npm run build```, then ```server -s build```. Finally, visit ```localhost:3000``` in your browser if it does not automatically open.
+The service worker currently only works in production mode. You can run this app in production mode using ```npm run build```, then ```serve -s build```. Finally, visit ```localhost:3000``` in your browser if it does not automatically open.
 
 ## Attributions
 
