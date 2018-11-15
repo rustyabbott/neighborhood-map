@@ -15,24 +15,24 @@ export default class List extends React.Component {
   render = () => {
     return (
       <Drawer open={this.props.open} onClose={this.props.toggleDrawer}>
-        <div>
+        <section>
           <input
             type="text"
             name="filter"
             placeholder="Filter locations"
-            arria-label="Filter locations"
+            aria-label="Filter locations"
             onChange={ e => this.updateQuery(e.target.value) }
             value={this.state.query} />
           <ul>
             {this.props.pins && this.props.pins.map((location, index) => {
               return (
-                <li key={index} aria-labelledby={location.name}>
+                <li key={index} aria-label={location.name}>
                   <button key={index} onClick={e => this.props.clickButton(index)}>{location.name}</button>
                 </li>
               )
             })}
           </ul>
-        </div>
+        </section>
       </Drawer>
     )
   }

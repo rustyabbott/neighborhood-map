@@ -52,7 +52,7 @@ class App extends React.Component {
           <Button variant="contained" color="primary" onClick={this.toggleDrawer} aria-labelledby="Menu">
             Menu
           </Button>
-          <h1>Stuart, FL</h1>
+          <header><h1>Stuart, FL</h1></header>
         </div>
         <MapContainer
           lat={this.state.lat}
