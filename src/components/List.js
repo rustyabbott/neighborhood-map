@@ -20,7 +20,7 @@ export default class List extends React.Component {
             type="text"
             name="filter"
             placeholder="Filter locations"
-            arria-labelledby="Filter locations"
+            arria-label="Filter locations"
             onChange={ e => this.updateQuery(e.target.value) }
             value={this.state.query} />
           <ul>
