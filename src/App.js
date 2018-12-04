@@ -48,12 +48,12 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <div>
-          <Button variant="contained" color="primary" onClick={this.toggleDrawer} aria-labelledby="Menu">
+        <header>
+          <Button variant="contained" color="primary" onClick={this.toggleDrawer} aria-labelledby="Menu" className="menu">
             Menu
           </Button>
-          <header><h1>Stuart, FL</h1></header>
-        </div>
+          <h1>Stuart, Florida</h1>
+        </header>
         <MapContainer
           lat={this.state.lat}
           lon={this.state.lon}

@@ -1,3 +1,8 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -11,4 +16,18 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+header {
+  background-image: linear-gradient(to right, #3f51b5, yellow);
+}
+
+.App h1 {
+  float: right;
+  color: #3f51b5;
+  font-family: URW Chancery L, cursive, "Roboto";
+}
+
+.menu {
+  border-radius: 0;
 }
