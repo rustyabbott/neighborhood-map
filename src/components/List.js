@@ -15,14 +15,17 @@ export default class List extends React.Component {
   render = () => {
     return (
       <Drawer open={this.props.open} onClose={this.props.toggleDrawer}>
-        <section>
+        <section className="side-panel">
+          <h2>Search</h2>
           <input
             type="text"
             name="filter"
             placeholder="Filter locations"
             aria-label="Filter locations"
             onChange={ e => this.updateQuery(e.target.value) }
-            value={this.state.query} />
+            value={this.state.query}
+            className="input-field" />
+            <h2>or Select One</h2>
           <ul>
             {this.props.pins && this.props.pins.map((location, index) => {
               return (
