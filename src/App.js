@@ -10,7 +10,7 @@ class App extends React.Component {
   state = {
     lat: 27.1983121,
     lon: -80.256597,
-    zoom: 16.5,
+    zoom: 16,
     pins: Pins,
     open: false,
     selectedIndex: null
