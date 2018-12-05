@@ -43,5 +43,32 @@
     "zip": "34994",
     "url": "https://www.osceolastreet.com/",
     "pos": {"lat":27.198703,"lng":-80.253513}
+  },
+  {
+    "name": "Lyric Theatre",
+    "street": "59 SW Flagler Ave",
+    "city": "Stuart",
+    "state": "FL",
+    "zip": "34994",
+    "url": "https://www.osceolastreet.com/",
+    "pos": {"lat":27.199411,"lng":-80.254380}
+  },
+  {
+    "name": "Gilbert's Coffee Bar",
+    "street": "615 SW Anchorage Way",
+    "city": "Stuart",
+    "state": "FL",
+    "zip": "34994",
+    "url": "https://www.gilbertscoffeebar.com/",
+    "pos": {"lat":27.200302,"lng":-80.258161}
+  },
+  {
+    "name": "Lady Ann's Tea Room",
+    "street": "506 SW Camden Ave",
+    "city": "Stuart",
+    "state": "FL",
+    "zip": "34994",
+    "url": "https://www.ladyannstearoom.com/menus/",
+    "pos": {"lat":27.195930,"lng":-80.253831}
   }
 ]
