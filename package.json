@@ -1,10 +1,11 @@
 {
-  "homepage": "https://rusty.ninja/react-map",
+  "homepage": "https://rustyabbott.github.io/neighborhood-map/",
   "name": "neighborhood-map",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.5.1",
+    "gh-pages": "^2.0.1",
     "google-maps-react": "^2.0.2",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
